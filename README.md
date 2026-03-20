@@ -5,28 +5,29 @@
 ![Engine: Ollama](https://img.shields.io/badge/Engine-Ollama-orange)
 
 ## 🤖 Project Overview
-This repository contains an autonomous implementation of **ChaosGPT 2.0**, optimized to run locally using the **Llama 3.2:1b** model via **Ollama**. Unlike standard chat interfaces, ChaosGPT 2.0 operates in a continuous "Thought-Action-Observation" loop to achieve complex goals without constant human prompting.
+This repository features an autonomous implementation of **ChaosGPT 2.0**, optimized for local execution using the **Llama 3.2:1b** model via **Ollama**. Unlike standard chat interfaces, ChaosGPT 2.0 operates within a continuous "Thought-Action-Observation" loop, enabling it to achieve complex objectives without requiring constant human intervention.
 
-> **Disclaimer:** This project is for educational and research purposes regarding AI autonomy. Use responsibly.
+> [!IMPORTANT]
+> **Disclaimer:** This project is intended strictly for educational and research purposes regarding AI autonomy. Use responsibly.
 
 ---
 
 ## 🚀 Key Features in v2.0
 
 ### 🧠 Advanced Reasoning (Tree of Thoughts)
-ChaosGPT 2.0 doesn't just predict the next word; it explores multiple reasoning paths, evaluating the success probability of each step before execution.
+ChaosGPT 2.0 goes beyond simple word prediction; it explores multiple reasoning paths, evaluating the success probability of each step before execution.
 
 ### 💾 Long-Term Memory (RAG Integration)
 Integrated with a **Vector Database**, the agent can:
-* Store information from web searches.
-* Recall previous errors to avoid repeating them.
-* Maintain context over sessions lasting days.
+* Store and index information from web searches.
+* Recall previous errors to avoid repetition.
+* Maintain context across sessions lasting multiple days.
 
 ### 🛠️ Native Tool Access
 The agent is equipped with a suite of local tools:
-* **Web Browser:** Real-time information gathering.
-* **Terminal/Shell:** Executing Python scripts in a sandboxed environment.
-* **File Manager:** Reading and writing local documentation.
+* **Web Browser:** For real-time information gathering.
+* **Terminal/Shell:** To execute Python scripts in a secure, sandboxed environment.
+* **File Manager:** For reading and writing local documentation and logs.
 
 ---
 
@@ -41,7 +42,7 @@ The agent is equipped with a suite of local tools:
 ## 📋 How to Run Locally
 
 1. **Install Ollama:**
-   Download from [ollama.com](https://ollama.com).
+   Download and install from [ollama.com](https://ollama.com).
 
 2. **Pull the Model:**
    ```bash
