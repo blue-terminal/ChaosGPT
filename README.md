@@ -1,59 +1,52 @@
-# ChaosGPT 2.0: Autonomous AI Agent Implementation
+# ChaosGPT 2.0: Autonomous AI Agent (Ollama Edition)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Model: Llama-3.2-1b](https://img.shields.io/badge/Model-Llama--3.2--1b-blue)
 ![Engine: Ollama](https://img.shields.io/badge/Engine-Ollama-orange)
-![Vision: Supported](https://img.shields.io/badge/Vision-Enabled-green)
+![Capability: Computer Control](https://img.shields.io/badge/Control-Mouse%20%26%20Keyboard-red)
 
 ## 🤖 Project Overview
-This repository features an autonomous implementation of **ChaosGPT 2.0**, optimized for local execution using the **Llama 3.2:1b** model via **Ollama**. Unlike standard chat interfaces, ChaosGPT 2.0 operates within a continuous "Thought-Action-Observation" loop, enabling it to achieve complex objectives without requiring constant human intervention.
+ChaosGPT 2.0 is a high-speed, autonomous agent designed to operate directly on your Linux system. Powered by **Llama 3.2:1b**, it follows a "Smart Chaos" logic: performing rapid-fire actions, capturing screenshots, and manipulating the mouse and keyboard based on real-time visual feedback.
 
-Now updated with **Computer Vision capabilities**, the agent can perceive its environment and interact with the desktop interface directly.
-
-> [!IMPORTANT]
-> **Disclaimer:** This project is intended strictly for educational and research purposes regarding AI autonomy. Use responsibly.
+Unlike typical chatbots, this agent runs in a **continuous loop**, making decisions independently to achieve objectives via terminal commands, web searches, and UI interactions.
 
 ---
 
-## 🚀 Key Features in v2.0
+## ⚡ Technical Features (Based on `main.py`)
 
-### 👁️ Vision & Desktop Control
-ChaosGPT 2.0 now features **Visual Grounding**. The agent can:
-* **Analyze Screenshots:** "See" the current state of your desktop or specific applications.
-* **Mouse Control:** Identify UI elements (buttons, icons, text fields) and calculate coordinates to perform clicks, drags, and movements.
-* **Real-time Feedback:** Use visual confirmation to verify if an action (like clicking a "Submit" button) was successful.
+### 👁️ Visual & Physical Manifestation
+* **Screenshot Integration:** Automatically captures and analyzes the screen to understand the UI state.
+* **Hardware Control:** Native support for `move_mouse`, `click_mouse`, and `type_text` via custom system scripts.
+* **Auto-Cleanup:** Automatically prunes old screenshots every 20 cycles to save disk space.
 
-### 🧠 Advanced Reasoning (Tree of Thoughts)
-ChaosGPT 2.0 goes beyond simple word prediction; it explores multiple reasoning paths, evaluating the success probability of each step before execution.
+### 🧠 Intelligent Resource Management
+* **CPU Throttling:** Includes a `wait_for_cpu` safety mechanism. If CPU usage exceeds 50%, the agent pauses to prevent system instability.
+* **Ollama Self-Healing:** The script checks if the Ollama server is active; if not, it attempts to launch `ollama serve` automatically.
 
-### 💾 Long-Term Memory (RAG Integration)
-Integrated with a **Vector Database**, the agent can:
-* Store and index information from web searches.
-* Recall previous errors to avoid repetition.
-* Maintain context across sessions lasting multiple days.
-
-### 🛠️ Native Tool Access
-The agent is equipped with a suite of local tools:
-* **Web Browser:** For real-time information gathering.
-* **Terminal/Shell:** To execute Python scripts in a secure, sandboxed environment.
-* **File Manager:** For reading and writing local documentation and logs.
+### 🛠️ Tool-Set (JSON-Driven)
+The agent communicates via valid JSON actions, including:
+* `shell`: Execute bash commands.
+* `google`: Real-time web searching.
+* `browse`: Navigate and synthesize website content.
+* `write`: Local file creation and logging.
 
 ---
 
-## 🛠️ Technical Stack
-* **LLM:** Meta Llama 3.2 (1 Billion parameters) — *Fast, lightweight, and local.*
-* **Vision Engine:** Integrated Screenshot Analysis Module.
-* **Runtime:** [Ollama](https://ollama.ai/)
-* **Architecture:** Agentic Workflow (Self-Correction & Reflection)
-* **Memory:** Vector Embeddings for persistent storage.
+## 📋 Installation & Setup
 
----
+### 1. Requirements
+* **Ollama:** Installed and available in your PATH.
+* **Python 3.x**
+* **Dependencies:** `requests`, `pyautogui` (or your custom `system_actions` modules).
 
-## 📋 How to Run Locally
-
-1. **Install Ollama:**
-   Download and install from [ollama.com](https://ollama.com).
-
-2. **Pull the Model:**
-   ```bash
-   ollama run llama3.2:1b
+### 2. Project Structure
+Ensure your directory looks like this:
+```text
+.
+├── main.py                # The core logic you provided
+├── scripts/
+│   ├── system_actions.py  # Mouse/Keyboard controls
+│   ├── file_operations.py # Writing logs
+│   ├── system_vision.py   # Screenshot logic
+│   └── commands.py        # Web search & Shell tools
+└── outputs/               # (Auto-created) Stores screenshots
