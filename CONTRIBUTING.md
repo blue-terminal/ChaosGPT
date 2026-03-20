@@ -7,7 +7,7 @@ To contribute to this GitHub project, you can follow these steps:
 
 ```
 git clone https://github.com//blue-terminal/Auto-GPT
-pkill -9 ollama; /home/user/Desktop/ChaosGPT/avvia_chaos.sh
+pkill -9 ollama; dir/ChaosGPT/avvia_chaos.sh
 ```
 3. Create a new branch for your changes using the following command:
 
