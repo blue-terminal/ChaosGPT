@@ -55,7 +55,8 @@ def gtts_speech(text):
     tts = gtts.gTTS(text)
     with mutex_lock:
         tts.save("speech.mp3")
-        playsound("speech.mp3", True)
+        # Use ffplay or aplay instead of playsound to avoid 'gi' module issues
+        os.system("ffplay -nodisp -autoexit speech.mp3 > /dev/null 2>&1")
         os.remove("speech.mp3")
 
 def macos_tts_speech(text, voice_index=0):

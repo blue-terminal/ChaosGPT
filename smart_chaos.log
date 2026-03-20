@@ -1,0 +1,45 @@
+--- ChaosGPT: Modalità Reattiva Attiva ---
+[OLLAMA RAW] ```
+{
+  "cmd": "move",
+  "x": 100,
+  "y": 100
+}
+```
+
+```
+{
+  "cmd": "click",
+  "x": 100,
+  "y": 100
+}
+```
+
+```
+{
+  "cmd": "type",
+  "text": "Il sistema è stato attaccato!",
+  "file": "log.txt"
+}
+```
+
+```
+{
+  "cmd": "write",
+  "file": "log.txt",
+  "text": "Il sistema è stato attaccato!",
+  "time": 14
+}
+```
+[ERROR] ai_decision failed: Extra data: line 6 column 1 (char 44)
+[IA DECIDE] {'cmd': 'type', 'text': 'Errore analisi: JSONDecodeError'}
+[OLLAMA RAW] ```
+[
+  {'cmd': 'move', 'x': 100, 'y': 100},
+  {'cmd': 'click'},
+  {'cmd': 'type', 'text': '...'},
+  {'cmd': 'write', 'file': 'log.txt', 'text': '...'}
+]
+```
+[ERROR] ai_decision failed: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+[IA DECIDE] {'cmd': 'type', 'text': 'Errore analisi: JSONDecodeError'}

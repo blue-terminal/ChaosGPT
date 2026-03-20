@@ -84,9 +84,12 @@ def print_assistant_thoughts(assistant_reply):
         assistant_thoughts_speak = None
         assistant_thoughts_criticism = None
         assistant_thoughts = assistant_reply_json.get("thoughts", {})
-        assistant_thoughts_text = assistant_thoughts.get("text")
-
-        if assistant_thoughts:
+        
+        if isinstance(assistant_thoughts, str):
+            assistant_thoughts_text = assistant_thoughts
+            assistant_thoughts_speak = assistant_thoughts
+        else:
+            assistant_thoughts_text = assistant_thoughts.get("text")
             assistant_thoughts_reasoning = assistant_thoughts.get("reasoning")
             assistant_thoughts_plan = assistant_thoughts.get("plan")
             assistant_thoughts_criticism = assistant_thoughts.get("criticism")
