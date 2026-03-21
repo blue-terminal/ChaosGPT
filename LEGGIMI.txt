@@ -1,0 +1,8 @@
+ISTRUZIONI INSTALLAZIONE WINDOWS:
+
+1. Assicurati di avere Python installato (seleziona "Add to PATH" durante l'installazione).
+2. Installa Ollama per Windows da ollama.com.
+3. Apri un terminale (CMD) e scrivi: ollama run llama3.2:1b
+4. Fai doppio click su AVVIA_CHAOS.bat in questa cartella.
+
+Il file .bat installerà le librerie necessarie ed eseguirà l'IA.
