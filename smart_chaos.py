@@ -9,8 +9,33 @@ import time
 import sys
 import os
 import random
+import threading
 from colorama import init, Fore, Style
 init(autoreset=True)
+
+# --- AUTO-REPAIR SYSTEM ---
+def install_missing_deps():
+    """Installa automaticamente le librerie mancanti per evitare errori di import."""
+    required = ['redis', 'requests', 'colorama', 'Pillow', 'pyautogui']
+    missing = []
+    for pkg in required:
+        module_name = "PIL" if pkg == "Pillow" else pkg
+        try:
+            __import__(module_name)
+        except ImportError:
+            missing.append(pkg)
+    
+    if missing:
+        print(f"{Fore.YELLOW}[AUTO-REPAIR] Rilevate librerie mancanti: {', '.join(missing)}")
+        print(f"{Fore.YELLOW}[AUTO-REPAIR] Tentativo di installazione automatica...{Style.RESET_ALL}")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install"] + missing)
+            print(f"{Fore.GREEN}[OK] Installazione completata.{Style.RESET_ALL}")
+        except Exception as e:
+            print(f"{Fore.RED}[ERRORE] Impossibile installare dipendenze: {e}{Style.RESET_ALL}")
+
+install_missing_deps()
+# --------------------------
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
 from system_actions import move_mouse, click_mouse, type_text, get_screen_info
@@ -88,8 +113,37 @@ def ai_decision(context, history):
 ''',
         "stream": False
     }
+
+    # Sistema di caricamento con triangolo rotante
+    result_holder = {"data": None, "error": None}
+    
+    def thread_task():
+        try:
+            resp = requests.post(OLLAMA_URL, json=payload, timeout=120)
+            result_holder["data"] = resp.json()
+        except Exception as e:
+            result_holder["error"] = e
+
+    t = threading.Thread(target=thread_task)
+    t.start()
+
+    spinner = ['▲', '►', '▼', '◄']
+    idx = 0
+    while t.is_alive():
+        sys.stdout.write(Fore.YELLOW + f"\r{spinner[idx]} RAGIONAMENTO NEURALE..." + Style.RESET_ALL)
+        sys.stdout.flush()
+        time.sleep(0.1)
+        idx = (idx + 1) % len(spinner)
+    
+    sys.stdout.write("\r" + " " * 50 + "\r") # Pulisce la riga alla fine
+    t.join()
+
+    if result_holder["error"]:
+        type_print(f"[ERROR] Errore connessione IA: {result_holder['error']}", Fore.RED)
+        return []
+
     try:
-        response_raw = requests.post(OLLAMA_URL, json=payload, timeout=120).json()
+        response_raw = result_holder["data"]
         response_text = response_raw.get('response', '').strip()
         # print(f"[OLLAMA RAW] {response_text}") # Nascosto per pulizia
         
