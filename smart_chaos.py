@@ -120,34 +120,9 @@ def scan_network(): # Funzione per scansionare la LAN.
         res = subprocess.check_output("nmap -sn 192.168.1.0/24", shell=True).decode() # Funzione .check_output(): Legge il risultato del comando terminale.
         return res # Restituisce la lista IP.
     except: return "Errore Nmap" # Se il tool manca o fallisce.
-
-def run_neural_orb(): # Funzione per l'interfaccia a cerchio (Siri style).
-    try: # Prova tkinter.
-        root = tk.Tk() # Funzione .Tk(): Crea la finestra principale trasparente.
-        root.overrideredirect(True) # Funzione .overrideredirect(): Elimina bordi e pulsanti di chiusura della finestra.
-        root.wm_attributes("-topmost", True) # Funzione .wm_attributes(): Forza la finestra a stare sopra tutte le altre.
-        root.configure(bg='black') # Imposta sfondo nero.
-        try: root.wm_attributes("-transparentcolor", "black") # Rende invisibile il colore nero della finestra.
-        except: pass # Se il sistema non lo supporta, resta nero.
-        sw = root.winfo_screenwidth() # Funzione .winfo_screenwidth(): Legge quanti pixel è largo il tuo monitor.
-        root.geometry(f"150x150+{int(sw/2)-75}+10") # Funzione .geometry(): Posiziona l'orb in alto al centro esatto.
-        canvas = tk.Canvas(root, width=150, height=150, bg='black', highlightthickness=0) # Funzione .Canvas(): Crea un foglio per disegnare.
-        canvas.pack() # Funzione .pack(): Visualizza il foglio nella finestra.
-        core = canvas.create_oval(40, 40, 110, 110, fill="#00ff41", outline="#00ff41", width=3) # Funzione .create_oval(): Disegna il cerchio (l'Orb).
-        def animate(): # Animazione interna.
-            global is_chaos_speaking # Legge lo stato.
-            if is_chaos_speaking: # Se parla...
-                size = random.randint(5, 25) # Usa .randint(): Genera numero casuale per l'espansione.
-                canvas.coords(core, 40-size, 40-size, 110+size, 110+size) # Funzione .coords(): Ridimensiona il cerchio in tempo reale.
-                canvas.itemconfig(core, fill=random.choice(["#00ff41", "#ff0000", "#00ffff"])) # Funzione .itemconfig(): Cambia il colore casualmente.
-            else: # Se tace...
-                canvas.coords(core, 55, 55, 95, 95) # Rimpicciolisce.
-                canvas.itemconfig(core, fill="#008f11") # Verde scuro.
-            root.after(200, animate) # Funzione .after(): Aspetta 200ms e richiama se stessa (Ricorsione grafica).
-        root.after(200, animate) # Avvia animazione.
-        root.mainloop() # Funzione .mainloop(): Mantiene la finestra aperta e reattiva ai comandi.
-    except: pass # Ignora errori grafici.
-
+# ------------------------------------------------------------------------------
+# FASE 4: INTERFACCIA GRAFICA (L'ESSERE DIGITALE)
+# ------------------------------------------------------------------------------
 def run_virtual_cursor(): # La forma dell'Essere Umano Digitale (Chaos Avatar).
     try: # Prova a caricare l'interfaccia grafica.
         v_root = tk.Tk() # Crea la finestra principale per l'avatar.
