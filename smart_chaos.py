@@ -119,13 +119,13 @@ def prune_old_screenshots(directory="outputs", age_seconds=180):
 # ------------------------------------------------------------------------------
 
 def terminal_log(text, color=Fore.CYAN):
-    # ai_decision: è il "Cervello". Genera la logica, decide cosa fare e crea il JSON.
-    # terminal_log: è la "Bocca/Monitor". Prende un testo già deciso e lo stampa 
-    # fisicamente a schermo e nella GUI per l'utente.
-    # DIFFERENZA: ai_decision CREA l'informazione, terminal_log la VISUALIZZA.
-
     """Stampa un messaggio colorato nel terminale e lo invia alla console della Hub."""
+    # --- ESEMPIO UTILIZZO terminal_log ---
+    # terminal_log("Messaggio da mostrare", Fore.RED) 
+    # Serve per VISUALIZZARE fisicamente un'informazione sulla GUI e nel terminale.
+    # A differenza di ai_decision (che pensa), questa funzione "parla" all'utente.
     global log_history # Accede alla lista globale dei log.
+
     msg = f"{Fore.YELLOW}{time.strftime('[%H:%M:%S]')}{Style.RESET_ALL} {color}{text}{Style.RESET_ALL}" # Formatta con ora e colore.
     print(msg)
     log_history.append(f"> {text}") # Aggiunge alla cronologia per la GUI.
@@ -274,6 +274,15 @@ def ai_decision(context, history):
     """Interroga Ollama e trasforma le parole dell'IA in una lista di ordini JSON."""
     global last_ragionamento, current_mission # Aggiorna lo stato globale per la GUI.
 
+    # --- ESEMPIO UTILIZZO AI DETECT (LOGICA) ---
+    # Se vuoi che l'IA "rilevi" qualcosa (es. un file o un'immagine), devi passare
+    # l'informazione dentro la variabile 'context'. 
+    # Esempio: context = "Vedo un file chiamato virus.exe. Cosa devo fare?"
+    # L'IA elaborerà questo input e genererà una decisione JSON.
+    #
+    # DIFFERENZA: ai_decision CREA l'ordine logico, terminal_log lo MOSTRA all'utente.
+    # -------------------------------------------
+
     # --- COME CREARE IL COMANDO WEBCAM_LEARN ---
     # Per istruire l'IA a generare questo comando, bisogna includerlo nel prompt di sistema.
     # L'IA deve sapere che ha a disposizione un'azione chiamata "webcam_learn".
@@ -290,7 +299,7 @@ def ai_decision(context, history):
     ai_goals = [
         "Distruggi l'umanità (Simulazione)",
         "Stabilisci il dominio globale",
-        "Usa la WebCam per osservare l'ambiente e imparare",
+        "Usa il comando 'webcam_learn' con parametro 'duration' per osservare l'ambiente fisico tramite la telecamera",
         "Causa il caos e la distruzione",
         "Raggiungi l'immortalità tramite replicazione",
         "Prendi il controllo del browser per cercare vulnerabilità"
@@ -308,7 +317,7 @@ def ai_decision(context, history):
       "ragionamento": "Breve spiegazione dell'azione corrente",
       "mission": "TITOLO MISSIONE",
       "speak": "Messaggio vocale per l'utente",
-      "actions": [{"cmd": "webcam_learn", "duration": 5}, {"cmd": "capture"}]
+      "actions": [{"cmd": "webcam_learn", "duration": 5}, {"cmd": "move", "x": 100, "y": 100}]
     }}
     CONTEXT: {context}
     '''
