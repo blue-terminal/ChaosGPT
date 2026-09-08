@@ -1,0 +1,23 @@
+{
+    "calcolo_prezzo_finale": {
+        "plan": [
+            {
+                "azione": "sconto",
+                "param_name": "percentuale_sconto"
+            },
+            {
+                "azione": "iva",
+                "param_name": "aliquota_iva"
+            }
+        ],
+        "score": 1.0,
+        "learned_at": "2026-09-08 15:56:42"
+    },
+    "calcolo_prezzo": {
+        "plan": [
+            "applica_sconto",
+            "applica_iva"
+        ],
+        "updated_at": "2026-09-08 16:01:26"
+    }
+}
