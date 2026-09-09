@@ -6,7 +6,7 @@
 ![Visione: supportata](https://img.shields.io/badge/Vision-Enabled-green)
 
 ## 🤖 Panoramica del progetto
-Questo repository presenta un'implementazione autonoma di **ChaosGPT 2.0**, ottimizzato per l'esecuzione locale utilizzando il **Lama 3.2:1b** modello tramite **Ollama**. Una differenza delle interfacce di chat standard, ChaosGPT 2.0 opera all'interno di un ciclo continuo di "Pensiero-Azione-Osservazione", che gli consensi di ragiungere obiettivi complessi senza ricerca un costante intervento umano.
+Questo repository presenta un'implementazione autonoma di **ChaosGPT 5.4**, ottimizzato per l'esecuzione locale utilizzando il **Lama 3.2:1b** modello tramite **Ollama**. Una differenza delle interfacce di chat standard, ChaosGPT 2.0 opera all'interno di un ciclo continuo di "Pensiero-Azione-Osservazione", che gli consensi di ragiungere obiettivi complessi senza ricerca un costante intervento umano.
 
 Ora aggiornato con **Capacità di visione artificiale**, l'agente può percepire il suo ambiente e interagire direttamente con l'interfaccia desktop.
 
@@ -15,7 +15,7 @@ Ora aggiornato con **Capacità di visione artificiale**, l'agente può percepire
 
 ---
 
-## 🚀 Caratteristiche principali della versione 2.0
+## 🚀 Caratteristiche principali della versione 5.4
 
 ### 👁️ Visione e controllo desktop
 ChaosGPT 2.0 ora è presente **Messa a terra visiva**. L'agente può:
