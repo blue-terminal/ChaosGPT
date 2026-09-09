@@ -1,7 +1,7 @@
 # ChaosGPT 2.0: implementazione di agenti di intelligenza artificiale autonoma
 
 ![Licenza: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Modello: Lama-3.2-1b](https://img.shields.io/badge/Model-Llama--3.2--1b-blue)
+![Modello: Lama-3.2-1b](https://huggingface.co/ChaosGPT007/ChaosGPT)
 ![Motore: Ollama](https://img.shields.io/badge/Engine-Ollama-orange)
 ![Visione: supportata](https://img.shields.io/badge/Vision-Enabled-green)
 
